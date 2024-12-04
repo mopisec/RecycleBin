@@ -43,9 +43,9 @@ idc.add_struc(0, struct_name, 0)
 struct_id = idc.get_struc_id(struct_name)
 for i in range(len(vftable_list)):
     if step == 4:
-        idc.add_struc_member(struct_id, f"field_{hex(i * 4)[2:]}", i * 4, idaapi.FF_DWORD, -1, step)
+        idc.add_struc_member(struct_id, ida_name.get_name(vftable_list[i]), i * 4, idaapi.FF_DWORD, -1, step)
     elif step == 8:
-        idc.add_struc_member(struct_id, f"field_{hex(i * 8)[2:]}", i * 8, idaapi.FF_QWORD, -1, 8)
+        idc.add_struc_member(struct_id, ida_name.get_name(vftable_list[i]), i * 8, idaapi.FF_QWORD, -1, 8)
     else:
         print('[-] Unknown step value')
 
